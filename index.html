@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Átrios de Adoração — Grupo de Jovens</title>
+  <meta name="description" content="Átrios de Adoração — grupo de jovens da Assembleia de Deus. Eventos, encontros e louvor. Confira os eventos e a galeria." />
+  <meta name="theme-color" content="#4517b1" />
+  <meta property="og:title" content="Átrios de Adoração — Grupo de Jovens" />
+  <meta property="og:description" content="Eventos, encontros e louvor para jovens. Veja a programação e galerias." />
+  <meta property="og:image" content="AD JOAQUIM GOMES.png" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Preload imagens prioritárias acima da dobra -->
+  <link rel="preload" as="image" href="TELÃO 2.jpg">
+  <link rel="preload" as="image" href="T2.jpg">
+  <link rel="preload" as="image" href="AD JOAQUIM GOMES.png">
+
+  <style>
+    :root{
+      --bg:#f1f2d9;
+      --accent:#4517b1;
+      --accent-2:#7a00ff;
+      --card:#ffffff;
+      --muted:#222;
+      --gap:16px;
+      --radius:12px;
+      --max-width:1100px;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    .skip-link{
+      position:fixed;left:12px;top:12px;padding:8px 12px;background:#000;color:#fff;border-radius:8px;z-index:100;
+      transform:translateY(-120%);transition:transform .18s ease;
+    }
+    .skip-link:focus{transform:none;outline:3px solid #fff}
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 16px}
+
+    header{
+      background:linear-gradient(180deg, rgba(69,23,177,0.98), rgba(122,0,255,0.95));
+      color:#fff;padding:12px 0;position:sticky;top:0;z-index:60;
+      box-shadow:0 6px 18px rgba(0,0,0,0.18);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;
+    }
+    .brand img{height:56px;width:auto;border-radius:8px}
+    .brand .title{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(18px,2.4vw,26px);letter-spacing:2px}
+    nav .links{display:flex;gap:12px;align-items:center}
+    nav a.link{
+      color:#fff;text-decoration:none;font-weight:700;font-family:'Cinzel',serif;padding:8px 10px;border-radius:8px;
+      transition:background .14s,transform .12s;
+      font-size:clamp(14px,1.6vw,18px)
+    }
+    nav a.link:hover, nav a.link:focus{background:rgba(255,255,255,0.06);transform:translateY(-2px);outline:none}
+    nav a.logo-link{display:inline-flex;align-items:center}
+
+    main{padding:28px 0;}
+
+    /* HERO: texto + cartão com miniatura + imagem lateral */
+    .hero{
+      display:grid;
+      gap:18px;
+      align-items:center;
+      grid-template-columns:1fr 420px;
+      padding:36px;
+      background: linear-gradient(180deg, rgba(69,23,177,0.98), rgba(122,0,255,0.95));
+      color:#fff;
+      border-radius:12px;
+      box-shadow:0 10px 30px rgba(69,23,177,0.12);
+    }
+    .hero-left{ display:flex; flex-direction:column; gap:18px; }
+    .hero h1{
+      margin:0;
+      font-family:'Cinzel',serif;
+      font-weight:900;
+      color:#fff;
+      font-size:clamp(28px,4.6vw,46px);
+      line-height:1;
+      text-shadow:0 6px 18px rgba(0,0,0,0.35);
+    }
+    .hero p{
+      margin:0;
+      color:rgba(255,255,255,0.95);
+      font-weight:700;
+      font-size:clamp(14px,1.6vw,18px);
+    }
+
+    .hero-card{
+      background: rgba(255,255,255,0.10);
+      padding:12px;
+      border-radius:12px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      max-width:540px;
+    }
+    .hero-card img.thumb{
+      width:96px;height:96px;object-fit:cover;border-radius:10px;flex:0 0 96px;box-shadow:0 8px 20px rgba(0,0,0,0.18);
+      border:3px solid rgba(255,255,255,0.06);
+    }
+    .hero-card .info{min-width:0}
+    .hero-card strong{ display:block;color:#fff;font-weight:800;margin-bottom:4px }
+    .hero-card .when{ font-family:'Cinzel',serif;font-size:16px;color:#fff;margin-bottom:6px }
+    .hero-card .where{ color:rgba(255,255,255,0.92);font-weight:700;margin-bottom:8px }
+    .hero-card .cta{ background:#fff; color:var(--accent); padding:8px 12px; border-radius:10px; text-decoration:none; font-weight:800; display:inline-block; }
+
+    .hero-image{ display:flex; align-items:center; justify-content:center; }
+    .hero-image img{
+      width:100%;
+      max-width:420px;
+      height:auto;
+      object-fit:cover;
+      border-radius:12px;
+      box-shadow:0 12px 40px rgba(0,0,0,0.25);
+      border:4px solid rgba(255,255,255,0.06);
+      display:block;
+    }
+
+    .section{background:transparent;padding:28px 0;}
+    .section h2{font-family:'Cinzel',serif;color:var(--accent);font-size:clamp(22px,2.6vw,34px);margin:6px 0 18px;text-align:center}
+    .descricao{max-width:900px;margin:0 auto 20px;font-size:clamp(14px,1.6vw,18px);font-weight:700;padding:0 12px;text-align:center}
+
+    .events-grid{
+      display:grid;
+      gap:var(--gap);
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      align-items:stretch;
+    }
+    .event-card{
+      display:flex;flex-direction:column;justify-content:space-between;
+      background:var(--card);border-radius:var(--radius);padding:18px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);text-decoration:none;color:var(--muted);
+      transition:transform .16s ease, box-shadow .16s ease;
+    }
+    .event-card:hover, .event-card:focus{
+      transform:translateY(-6px);box-shadow:0 14px 34px rgba(0,0,0,0.14);outline:none;
+    }
+    .event-card .eyebrow{font-weight:700;color:var(--accent-2);font-family:'Amatic SC',cursive;font-size:18px}
+    .event-card h3{margin:8px 0 10px;font-family:'Cinzel',serif;font-size:20px}
+    .event-card p{margin:0 0 14px;font-weight:700}
+    .event-card .meta{font-size:14px;color:#666;margin-bottom:14px}
+    .event-card .cta{
+      display:inline-block;padding:10px 14px;background:var(--accent);color:#fff;border-radius:10px;font-weight:800;
+      text-decoration:none;font-family:'Cinzel',serif;letter-spacing:0.6px;
+    }
+
+    footer{padding:22px 0;background:transparent;border-top:1px solid rgba(0,0,0,0.04);margin-top:30px}
+    .footer-inner{display:flex;flex-direction:column;gap:10px;align-items:center}
+    .socials{display:flex;gap:10px}
+    .socials a{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;background:#fff;color:var(--accent);text-decoration:none;font-weight:700}
+
+    :focus{outline:3px solid rgba(69,23,177,0.18);outline-offset:3px}
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;padding:20px}
+      .hero-image{order:2;margin-top:12px}
+      .hero-left{order:1}
+      .hero-image img{max-height:300px;width:100%;border-radius:10px}
+      .hero h1{font-size:clamp(22px,6vw,34px)}
+      .hero p{font-size:15px}
+      .hero-card{width:100%;padding:12px;align-items:flex-start}
+      .hero-card img.thumb{width:84px;height:84px;flex:0 0 84px}
+      .hero-card .cta{display:block;width:100%;text-align:center;padding:12px}
+      .events-grid{grid-template-columns:1fr}
+      .event-card{padding:14px}
+    }
+    @media (prefers-reduced-motion: reduce){
+      *{transition:none !important}
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+  <header>
+    <div class="container nav" role="navigation" aria-label="Menu principal">
+      <a class="brand logo-link" href="index.html">
+        <img src="AD JOAQUIM GOMES.png" alt="Logo AD Joaquim Gomes" loading="eager" fetchpriority="high" width="160" height="56">
+        <span class="title">Átrios de Adoração</span>
+      </a>
+
+      <nav class="links" aria-label="Links principais">
+        <a class="link" href="index.html">Início</a>
+        <a class="link" href="#eventos">Eventos</a>
+        <a class="link" href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-left">
+          <div class="intro">
+            <h1 id="hero-title">35° ANIVERSÁRIO — DEPT. ÁTRIOS DE ADORAÇÃO</h1>
+            <p>Louvor, comunhão e transformação — venha participar dos nossos eventos e grupos de jovens.</p>
+          </div>
+
+          <div class="hero-card" aria-hidden="false">
+            <img class="thumb" src="T2.jpg" alt="Miniatura do 35º Aniversário" loading="eager" fetchpriority="high" width="96" height="96">
+            <div class="info">
+              <strong>Próximo evento</strong>
+              <div class="when">12 DEZ • 18:30</div>
+              <div class="where">Igreja Assembleia de Deus — Joaquim Gomes</div>
+              <a class="cta" href="evento1.html">Ver evento</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image" aria-hidden="false">
+          <img src="TELÃO 2.jpg" alt="Jovens em adoração" loading="eager" fetchpriority="high" width="840" height="560">
+        </div>
+      </section>
+
+      <section id="eventos" class="section" aria-labelledby="events-title">
+        <h2 id="events-title">EVENTOS</h2>
+        <div class="descricao">Confira os próximos encontros, cultos e congressos do grupo de jovens. Clique para ver a galeria de cada evento.</div>
+
+        <div class="events-grid" style="margin-top:18px">
+          <a class="event-card" href="evento1.html" aria-label="Evento 1 - Vigília Jovem">
+            <div>
+              <div class="eyebrow">Evento</div>
+              <h3>Vigília Jovem</h3>
+              <p class="meta">12 Dez • 20:00 — Assembleia de Deus</p>
+            </div>
+            <div>
+              <p>Uma noite de louvor, intercessão e comunhão com os jovens.</p>
+              <span class="cta">Ver galeria</span>
+            </div>
+          </a>
+
+          <a class="event-card" href="evento2.html" aria-label="Evento 2 - Culto de Louvor">
+            <div>
+              <div class="eyebrow">Evento</div>
+              <h3>Culto de Louvor</h3>
+              <p class="meta">Sábados • 19:00</p>
+            </div>
+            <div>
+              <p>Louvor vibrante e palavra para edificação dos jovens.</p>
+              <span class="cta">Ver galeria</span>
+            </div>
+          </a>
+
+          <a class="event-card" href="evento3.html" aria-label="Evento 3 - Congresso Jovem">
+            <div>
+              <div class="eyebrow">Congresso</div>
+              <h3>Congresso Jovem</h3>
+              <p class="meta">Abril • 2026</p>
+            </div>
+            <div>
+              <p>Encontro anual com louvor, ministrações e oficinas.</p>
+              <span class="cta">Ver galeria</span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="contato" class="section" aria-labelledby="contato-title" style="margin-top:28px">
+        <h2 id="contato-title">Contato & Redes</h2>
+        <div class="descricao">Quer saber mais? Entre em contato ou siga nossas redes para ficar por dentro das novidades.</div>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px">
+          <a href="#" class="cta" style="background:var(--accent);color:#fff">WhatsApp</a>
+          <a href="#" class="cta" style="background:#1da1f2;color:#fff">Instagram</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div style="font-weight:700">Átrios de Adoração — Assembleia de Deus • Joaquim Gomes</div>
+      <div class="socials" aria-label="Redes sociais">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="YouTube">YT</a>
+        <a href="#" aria-label="WhatsApp">WA</a>
+      </div>
+      <div style="color:#666;font-size:13px">© <span id="year">2025</span> Átrios de Adoração. Todos os direitos reservados.</div>
+    </div>
+  </footer>
+
+  <script>
+    // atualiza ano no rodapé
+    try {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    } catch(e){}
+  </script>
+</body>
+</html>
+```//
