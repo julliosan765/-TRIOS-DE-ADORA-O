@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>35° Aniversário — Átrios de Adoração</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#4517b1;
+  --bg:#f8f9f5;
+  --marrom:#4517b1;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);font-family:'Inter',sans-serif;color:#4517b1;text-align:center;padding:20px 0}
+nav{background:var(--accent);padding:14px 0;position:sticky;top:0;z-index:100}
+nav a{color:#fff;text-decoration:none;font-family:'Cinzel',serif;font-weight:700;font-size:19px}
+nav .logo{height:50px;vertical-align:middle}
+h1{font-family:'Cinzel',serif;font-size:38px;color:var(--marrom);margin:20px 0 8px}
+h4{font-family:'Cinzel',serif;font-size:22px;color:#4517b1;margin-bottom:20px}
+
+.descricao-box{
+  background:#4517b1;color:#fff;width:100%;max-width:430px;margin:30px auto;
+  padding:16px 20px;border-radius:18px;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,0.20);
+  overflow:hidden;text-align:left;transition:all .3s ease;
+}
+.descricao-texto{max-height:60px;overflow:hidden;transition:max-height .4s ease;}
+.toggle-btn{margin-top:10px;background:none;border:none;color:#fff;font-weight:700;
+  cursor:pointer;font-size:15px;display:flex;align-items:center;gap:5px;}
+.toggle-btn:hover{opacity:0.8}
+#toggleSeta{font-size:22px;display:inline-block;transition:transform .3s}
+
+.gallery-wrap{max-width:1100px;margin:0 auto;padding:20px 0}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));justify-items:center;}
+.item{position:relative;width:140px;height:250px;border-radius:20px;overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.22);cursor:pointer;background:#000;}
+.item img,.item video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
+.item:hover img,.item:hover video{transform:scale(1.08)}
+.play{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  background:rgba(0,0,0,0.75);color:#fff;padding:9px 18px;border-radius:30px;
+  font-weight:800;font-size:14px;backdrop-filter:blur(10px);z-index:2;}
+
+.lightbox{
+  position:fixed;inset:0;background:rgba(0,0,0,0.97);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;z-index:999;opacity:0;visibility:hidden;transition:opacity .3s;
+}
+.lightbox.open{opacity:1;visibility:visible}
+
+.lb-content{
+  position:relative;max-width:90%;max-height:80vh;display:flex;justify-content:center;align-items:center;
+}
+#lbImg,#lbVideo{
+  max-width:100%;max-height:80vh;object-fit:contain;border-radius:20px;
+  box-shadow:0 15px 50px rgba(0,0,0,0.7);
+}
+
+.download-btn{
+  position:absolute;bottom:-70px;left:50%;transform:translateX(-50%);
+  background:var(--marrom);color:#fff;padding:16px 40px;border-radius:50px;
+  font-weight:800;font-size:19px;text-decoration:none;box-shadow:0 12px 35px rgba(0,0,0,0.6);
+  transition:all .3s;z-index:20;white-space:nowrap;background:rgba(69,23,177,0.95);
+  backdrop-filter:blur(10px);
+}
+.download-btn:hover{transform:translateX(-50%) translateY(-6px);background:#3a0d99}
+
+.lb-close{
+  position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.15);
+  color:#fff;border:none;padding:12px 18px;border-radius:50%;font-size:30px;cursor:pointer;z-index:30;
+}
+
+.nav-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.2);
+  color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:40px;cursor:pointer;z-index:25;backdrop-filter:blur(10px);
+  transition:all .3s;user-select:none;
+}
+.nav-arrow:hover{background:rgba(255,255,255,0.4);}
+#prevBtn{left:20px;}
+#nextBtn{right:20px;}
+
+/* Só aparece no computador */
+@media (hover: hover) and (pointer: fine) {
+  .nav-arrow{display:flex !important;}
+}
+@media (hover: none) and (pointer: coarse) {
+  .nav-arrow{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Início</a>
+  <img src="AD JOAQUIM GOMES.png" alt="Logo" class="logo">
+</nav>
+
+<h1>ÁTRIOS DE ADORAÇÃO</h1>
+<p><strong>35° Aniver do Departamento</strong></p>
+
+<div class="descricao-box">
+  <div class="descricao-texto" id="descTexto">
+    A abertura da festividade mostrou que Deus está fazendo algo grande entre nós. Cada louvor, palavra e oração revelaram dias de santidade e manifestação do Seu poder. 💜<br><br>
+    Nada se compara à presença do Senhor — onde antes havia vazio, hoje o Espírito Santo habita. Queremos estar tão cheios dele que Sua presença transborde em cada olhar, palavra e gesto de amor, porque só Ele preenche. 💜<br><br>
+    Encerramos o 35º aniversário do Átrios de Adoração com o coração cheio de gratidão. Foram dias de renovação, unidade e forte presença de Deus. Que Ele continue nos fortalecendo para avançarmos ainda mais em Sua obra. Átrios de Adoração: 35 anos adorando ao Rei dos reis! 💜
+  </div>
+  <button class="toggle-btn" onclick="toggleDescricao()">
+    <span id="toggleSeta">›</span>
+    <span id="toggleTexto">Mais</span>
+  </button>
+</div>
+
+<div class="gallery-wrap">
+  <div class="grid" id="gallery"></div>
+</div>
+
+<div id="lightbox" class="lightbox">
+  <button class="lb-close">×</button>
+  <div class="nav-arrow" id="prevBtn">←</div>
+  <div class="nav-arrow" id="nextBtn">→</div>
+  
+  <div class="lb-content">
+    <img id="lbImg" src="" alt="" style="display:none">
+    <video id="lbVideo" controls autoplay style="display:none"></video>
+    <a id="downloadBtn" class="download-btn" href="" download>BAIXAR AGORA</a>
+  </div>
+</div>
+
+<!-- TODAS AS MÍDIAS -->
+<div id="media-source" style="display:none">
+  <!-- VÍDEOS -->
+  <div class="item" data-type="video" data-src="APRESENTACAO.mp4"></div>
+  <div class="item" data-type="video" data-src="VIDE1.mp4"></div>
+  <div class="item" data-type="video" data-src="VIDE2.mp4"></div>
+  <div class="item" data-type="video" data-src="VIDE3.mp4"></div>
+
+  <!-- FOTOS -->
+  <div class="item" data-type="image" data-src="DIA 10.jpg"></div>
+  <div class="item" data-type="image" data-src="SANTIFICACAO.jpg"></div>
+  <div class="item" data-type="image" data-src="DIA8.jpg"></div>
+  <div class="item" data-type="image" data-src="DIA7.jpg"></div>
+  <div class="item" data-type="image" data-src="DIA5.jpg"></div>
+  <div class="item" data-type="image" data-src="DIA4.jpg"></div>
+  <div class="item" data-type="image" data-src="DIA3.jpg"></div>
+  <div class="item" data-type="image" data-src="DIA2.jpg"></div>
+  <div class="item" data-type="image" data-src="DIA1.jpg"></div>
+  <div class="item" data-type="image" data-src="É HOJE.jpg"></div>
+  <div class="item" data-type="image" data-src="001.jpg"></div>
+  <div class="item" data-type="image" data-src="002.jpg"></div>
+  <div class="item" data-type="image" data-src="003.jpg"></div>
+  <div class="item" data-type="image" data-src="004.jpg"></div>
+  <div class="item" data-type="image" data-src="005.jpg"></div>
+  <div class="item" data-type="image" data-src="006.jpg"></div>
+  <div class="item" data-type="image" data-src="007.jpg"></div>
+  <div class="item" data-type="image" data-src="008.jpg"></div>
+  <div class="item" data-type="image" data-src="009.jpg"></div>
+  <div class="item" data-type="image" data-src="010.jpg"></div>
+  <div class="item" data-type="image" data-src="011.jpg"></div>
+  <div class="item" data-type="image" data-src="012.jpg"></div>
+  <div class="item" data-type="image" data-src="013.jpg"></div>
+  <div class="item" data-type="image" data-src="014.jpg"></div>
+  <div class="item" data-type="image" data-src="015.jpg"></div>
+  <div class="item" data-type="image" data-src="016.jpg"></div>
+  <div class="item" data-type="image" data-src="017.jpg"></div>
+  <div class="item" data-type="image" data-src="018.jpg"></div>
+  <div class="item" data-type="image" data-src="019.jpg"></div>
+  <div class="item" data-type="image" data-src="020.jpg"></div>
+  <div class="item" data-type="image" data-src="021.jpg"></div>
+  <div class="item" data-type="image" data-src="022.jpg"></div>
+  <div class="item" data-type="image" data-src="023.jpg"></div>
+  <div class="item" data-type="image" data-src="024.jpg"></div>
+  <div class="item" data-type="image" data-src="025.jpg"></div>
+  <div class="item" data-type="image" data-src="026.jpg"></div>
+  <div class="item" data-type="image" data-src="027.jpg"></div>
+  <div class="item" data-type="image" data-src="028.jpg"></div>
+  <div class="item" data-type="image" data-src="029.jpg"></div>
+  <div class="item" data-type="image" data-src="030.jpg"></div>
+  <div class="item" data-type="image" data-src="031.jpg"></div>
+  <div class="item" data-type="image" data-src="032.jpg"></div>
+  <div class="item" data-type="image" data-src="033.jpg"></div>
+  <div class="item" data-type="image" data-src="034.jpg"></div>
+  <div class="item" data-type="image" data-src="035.jpg"></div>
+  <div class="item" data-type="image" data-src="036.jpg"></div>
+  <div class="item" data-type="image" data-src="037.jpg"></div>
+  <div class="item" data-type="image" data-src="038.jpg"></div>
+  <div class="item" data-type="image" data-src="039.jpg"></div>
+  <div class="item" data-type="image" data-src="040.jpg"></div>
+  <div class="item" data-type="image" data-src="041.jpg"></div>
+  <div class="item" data-type="image" data-src="042.jpg"></div>
+  <div class="item" data-type="image" data-src="043.jpg"></div>
+  <div class="item" data-type="image" data-src="044.jpg"></div>
+  <div class="item" data-type="image" data-src="045.jpg"></div>
+  <div class="item" data-type="image" data-src="046.jpg"></div>
+  <div class="item" data-type="image" data-src="047.jpg"></div>
+  <div class="item" data-type="image" data-src="048.jpg"></div>
+  <div class="item" data-type="image" data-src="049.jpg"></div>
+  <div class="item" data-type="image" data-src="050.jpg"></div>
+  <div class="item" data-type="image" data-src="051.jpg"></div>
+  <div class="item" data-type="image" data-src="052.jpg"></div>
+  <div class="item" data-type="image" data-src="053.jpg"></div>
+  <div class="item" data-type="image" data-src="054.jpg"></div>
+  <div class="item" data-type="image" data-src="055.jpg"></div>
+  <div class="item" data-type="image" data-src="056.jpg"></div>
+  <div class="item" data-type="image" data-src="057.jpg"></div>
+  <div class="item" data-type="image" data-src="058.jpg"></div>
+  <div class="item" data-type="image" data-src="059.jpg"></div>
+  <div class="item" data-type="image" data-src="060.jpg"></div>
+  <div class="item" data-type="image" data-src="061.jpg"></div>
+  <div class="item" data-type="image" data-src="062.jpg"></div>
+  <div class="item" data-type="image" data-src="063.jpg"></div>
+  <div class="item" data-type="image" data-src="064.jpg"></div>
+  <div class="item" data-type="image" data-src="065.jpg"></div>
+  <div class="item" data-type="image" data-src="066.jpg"></div>
+  <div class="item" data-type="image" data-src="067.jpg"></div>
+  <div class="item" data-type="image" data-src="068.jpg"></div>
+  <div class="item" data-type="image" data-src="069.jpg"></div>
+  <div class="item" data-type="image" data-src="070.jpg"></div>
+  <div class="item" data-type="image" data-src="071.jpg"></div>
+  <div class="item" data-type="image" data-src="072.jpg"></div>
+  <div class="item" data-type="image" data-src="073.jpg"></div>
+  <div class="item" data-type="image" data-src="074.jpg"></div>
+  <div class="item" data-type="image" data-src="075.jpg"></div>
+  <div class="item" data-type="image" data-src="076.jpg"></div>
+  <div class="item" data-type="image" data-src="077.jpg"></div>
+  <div class="item" data-type="image" data-src="078.jpg"></div>
+  <div class="item" data-type="image" data-src="079.jpg"></div>
+  <div class="item" data-type="image" data-src="080.jpg"></div>
+  <div class="item" data-type="image" data-src="081.jpg"></div>
+  <div class="item" data-type="image" data-src="082.jpg"></div>
+  <div class="item" data-type="image" data-src="083.jpg"></div>
+  <div class="item" data-type="image" data-src="084.jpg"></div>
+  <div class="item" data-type="image" data-src="085.jpg"></div>
+  <div class="item" data-type="image" data-src="086.jpg"></div>
+  <div class="item" data-type="image" data-src="087.jpg"></div>
+  <div class="item" data-type="image" data-src="088.jpg"></div>
+  <div class="item" data-type="image" data-src="089.jpg"></div>
+  <div class="item" data-type="image" data-src="090.jpg"></div>
+  <div class="item" data-type="image" data-src="091.jpg"></div>
+  <div class="item" data-type="image" data-src="092.jpg"></div>
+  <div class="item" data-type="image" data-src="093.jpg"></div>
+  <div class="item" data-type="image" data-src="094.jpg"></div>
+  <div class="item" data-type="image" data-src="095.jpg"></div>
+  <div class="item" data-type="image" data-src="096.jpg"></div>
+  <div class="item" data-type="image" data-src="097.jpg"></div>
+  <div class="item" data-type="image" data-src="098.jpg"></div>
+  <div class="item" data-type="image" data-src="099.jpg"></div>
+  <div class="item" data-type="image" data-src="100.jpg"></div>
+  <div class="item" data-type="image" data-src="101.jpg"></div>
+  <div class="item" data-type="image" data-src="102.jpg"></div>
+  <div class="item" data-type="image" data-src="103.jpg"></div>
+  <div class="item" data-type="image" data-src="104.jpg"></div>
+  <div class="item" data-type="image" data-src="105.jpg"></div>
+</div>
+
+<script>
+// === GERAR MINIATURAS ===
+const allItems = Array.from(document.querySelectorAll('#media-source .item'));
+document.querySelectorAll('#media-source .item').forEach(item => {
+  const div = document.createElement('div');
+  div.className = 'item';
+  div.dataset.type = item.dataset.type;
+  div.dataset.src = item.dataset.src;
+  div.onclick = () => openLightbox(allItems.indexOf(item));
+
+  if (item.dataset.type === 'video') {
+    const video = document.createElement('video');
+    video.src = item.dataset.src; video.muted = true; video.loop = true;
+    video.playsInline = true; video.autoplay = true; video.preload = "metadata";
+    video.style.objectFit = "cover";
+    video.play().catch(() => {});
+    div.appendChild(video);
+    const playBtn = document.createElement('div');
+    playBtn.className = 'play'; playBtn.textContent = 'Play';
+    div.appendChild(playBtn);
+  } else {
+    const img = document.createElement('img');
+    img.src = item.dataset.src; img.loading = "lazy";
+    div.appendChild(img);
+  }
+  document.getElementById('gallery').appendChild(div);
+});
+setTimeout(() => document.querySelectorAll('#gallery video').forEach(v => v.play().catch(()=>{})), 600);
+
+// === LIGHTBOX ===
+let currentIndex = 0;
+const lbImg = document.getElementById('lbImg');
+const lbVideo = document.getElementById('lbVideo');
+const lightbox = document.getElementById('lightbox');
+
+function openLightbox(index) {
+  currentIndex = index;
+  showMedia(allItems[index]);
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showMedia(item) {
+  const src = item.dataset.src;
+  document.getElementById('downloadBtn').href = src;
+  document.getElementById('downloadBtn').download = src.split('/').pop();
+
+  if (item.dataset.type === 'video') {
+    lbImg.style.display = 'none';
+    lbVideo.src = src;
+    lbVideo.style.display = 'block';
+    lbVideo.play();
+  } else {
+    lbVideo.style.display = 'none';
+    lbVideo.pause();
+    lbVideo.src = '';
+    lbImg.src = src;
+    lbImg.style.display = 'block';
+  }
+}
+
+function prev() {
+  currentIndex = (currentIndex - 1 + allItems.length) % allItems.length;
+  showMedia(allItems[currentIndex]);
+}
+function next() {
+  currentIndex = (currentIndex + 1) % allItems.length;
+  showMedia(allItems[currentIndex]);
+}
+
+// === NOVO: SETAS DO TECLADO + CLIQUE NAS SETAS NA TELA ===
+document.getElementById('prevBtn').onclick = prev;
+document.getElementById('nextBtn').onclick = next;
+
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') prev();
+  if (e.key === 'ArrowRight') next();
+  if (e.key === 'Escape') {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// Swipe no celular
+let touchstartX = 0;
+lightbox.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; });
+lightbox.addEventListener('touchend', e => {
+  const touchendX = e.changedTouches[0].screenX;
+  if (touchstartX - touchendX > 50) next();
+  if (touchendX - touchstartX > 50) prev();
+});
+
+// Fechar
+document.querySelector('.lb-close').onclick = () => {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+};
+lightbox.onclick = e => {
+  if (e.target === lightbox) {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+};
+
+// Botão Mais/Menos da descrição
+function toggleDescricao(){
+  const texto = document.getElementById("descTexto");
+  const seta = document.getElementById("toggleSeta");
+  const nome = document.getElementById("toggleTexto");
+  if(texto.style.maxHeight === "none"){
+    texto.style.maxHeight = "60px";
+    seta.style.transform = "rotate(0deg)";
+    nome.innerText = "Mais";
+  } else {
+    texto.style.maxHeight = "none";
+    seta.style.transform = "rotate(90deg)";
+    nome.innerText = "Menos";
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CONJOAAD 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#f1c40f;
+  --bg:#f8f9f5;
+  --marrom: #85550d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);font-family:'Inter',sans-serif;color:#4517b1;text-align:center;padding:20px 0}
+nav{background:var(--accent);padding:14px 0;position:sticky;top:0;z-index:100}
+nav a{color:#fff;text-decoration:none;font-family:'Cinzel',serif;font-weight:700;font-size:19px}
+nav .logo{height:50px;vertical-align:middle}
+h1{font-family:'Cinzel',serif;font-size:38px;color:var(--marrom);margin:20px 0 8px}
+h4{font-family:'Cinzel',serif;font-size:22px;color:#f1c40f;margin-bottom:20px}
+
+.descricao-box{
+  background:hsl(37, 100%, 72%);color:#020202;width:100%;max-width:430px;margin:30px auto;
+  padding:16px 20px;border-radius:18px;font-size:15px;box-shadow:0 10px 30px rgba(13, 226, 6, 0.2);
+  overflow:hidden;text-align:left;transition:all .3s ease;
+}
+.descricao-texto{max-height:60px;overflow:hidden;transition:max-height .4s ease;}
+.toggle-btn{margin-top:10px;background:none;border:none;color:#000000;font-weight:700;
+  cursor:pointer;font-size:15px;display:flex;align-items:center;gap:5px;}
+.toggle-btn:hover{opacity:0.8}
+#toggleSeta{font-size:22px;display:inline-block;transition:transform .3s}
+
+.gallery-wrap{max-width:1100px;margin:0 auto;padding:20px 0}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));justify-items:center;}
+.item{position:relative;width:140px;height:250px;border-radius:20px;overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.22);cursor:pointer;background:#000;}
+.item img,.item video{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s;}
+.item:hover img,.item:hover video{transform:scale(1.08)}
+.play{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  background:rgba(0,0,0,0.75);color:#fff;padding:9px 18px;border-radius:30px;
+  font-weight:800;font-size:14px;backdrop-filter:blur(10px);z-index:2;}
+
+.lightbox{
+  position:fixed;inset:0;background:rgba(0,0,0,0.97);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;z-index:999;opacity:0;visibility:hidden;transition:opacity .3s;
+}
+.lightbox.open{opacity:1;visibility:visible}
+
+.lb-content{
+  position:relative;max-width:90%;max-height:80vh;display:flex;justify-content:center;align-items:center;
+}
+#lbImg,#lbVideo{
+  max-width:100%;max-height:80vh;object-fit:contain;border-radius:20px;
+  box-shadow:0 15px 50px rgba(0,0,0,0.7);
+}
+
+.download-btn{
+  position:absolute;bottom:-70px;left:50%;transform:translateX(-50%);
+  background:var(--marrom);color:#fff;padding:16px 40px;border-radius:50px;
+  font-weight:800;font-size:19px;text-decoration:none;box-shadow:0 12px 35px rgba(0,0,0,0.6);
+  transition:all .3s;z-index:20;white-space:nowrap;background:#b4b106 (69,23,177,0.95);
+  backdrop-filter:blur(10px);
+}
+.download-btn:hover{transform:translateX(-50%) translateY(-6px);background:#b4b106}
+
+.lb-close{
+  position:absolute;top:20px;right:20px;background:rgba(255,255,255,0.15);
+  color:#fff;border:none;padding:12px 18px;border-radius:50%;font-size:30px;cursor:pointer;z-index:30;
+}
+
+.nav-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.2);
+  color:#fff;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:40px;cursor:pointer;z-index:25;backdrop-filter:blur(10px);
+  transition:all .3s;user-select:none;
+}
+.nav-arrow:hover{background:rgba(255,255,255,0.4);}
+#prevBtn{left:20px;}
+#nextBtn{right:20px;}
+
+/* Só aparece no computador */
+@media (hover: hover) and (pointer: fine) {
+  .nav-arrow{display:flex !important;}
+}
+@media (hover: none) and (pointer: coarse) {
+  .nav-arrow{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Início</a>
+  <img src="AD JOAQUIM GOMES.png" alt="Logo" class="logo">
+</nav>
+
+<h1>CONJOAAD 2026</h1>
+<h4></h4>
+
+<div class="descricao-box">
+  <div class="descricao-texto" id="descTexto">
+   <strong>Atenção povo de Deus!!!! Coleção completa do nosso CONJOAAD 2026. Cada camisa mais linda que a outra. 
+   Já procura a coordenação da juventude da sua igreja e já reserva a sua.</strong>
+  </div>
+  <button class="toggle-btn" onclick="toggleDescricao()">
+    <span id="toggleSeta">›</span>
+    <span id="toggleTexto">Mais</span>
+  </button>
+</div>
+
+<div class="gallery-wrap">
+  <div class="grid" id="gallery"></div>
+</div>
+
+<div id="lightbox" class="lightbox">
+  <button class="lb-close">×</button>
+  <div class="nav-arrow" id="prevBtn">←</div>
+  <div class="nav-arrow" id="nextBtn">→</div>
+  
+  <div class="lb-content">
+    <img id="lbImg" src="" alt="" style="display:none">
+    <video id="lbVideo" controls autoplay style="display:none"></video>
+    <a id="downloadBtn" class="download-btn" href="" download>BAIXAR AGORA</a>
+  </div>
+</div>
+
+
+<!-- ARQUIVOS DO CONGRESSO JOVEM 2026 -->
+<div id="media-source" style="display:none">
+  <div class="item" data-type="image" data-src="CONJOAD/CONJOADITAS.jpg"></div>
+  <div class="item" data-type="video" data-src="CONJOAD/CON-video.mp4"></div>
+  <div class="item" data-type="image" data-src="CONJOAD/CORDENACAO.jpg"></div>
+  <div class="item" data-type="video" data-src="CONJOAD/COR-video.mp4"></div>
+  <div class="item" data-type="image" data-src="CONJOAD/MIDIA.jpg"></div>
+  <div class="item" data-type="video" data-src="CONJOAD/MID-video.mp4"></div>
+  <div class="item" data-type="image" data-src="CONJOAD/APOIO.jpg"></div>
+  <div class="item" data-type="video" data-src="CONJOAD/APO-video.mp4"></div>
+  <div class="item" data-type="image" data-src="CONJOAD/ESPECIAL(VISITANTE).jpg"></div>
+  <div class="item" data-type="video" data-src="CONJOAD/ESP-video.mp4"></div>
+  <div class="item" data-type="image" data-src="CONJOAD/LIBRAS.jpg"></div>
+  <div class="item" data-type="video" data-src="CONJOAD/LIB-video.mp4"></div>
+  <!-- Adicione mais se precisar -->
+</div>
+
+<script>
+// === GERAR MINIATURAS ===
+const allItems = Array.from(document.querySelectorAll('#media-source .item'));
+document.querySelectorAll('#media-source .item').forEach(item => {
+  const div = document.createElement('div');
+  div.className = 'item';
+  div.dataset.type = item.dataset.type;
+  div.dataset.src = item.dataset.src;
+  div.onclick = () => openLightbox(allItems.indexOf(item));
+
+  if (item.dataset.type === 'video') {
+    const video = document.createElement('video');
+    video.src = item.dataset.src; video.muted = true; video.loop = true;
+    video.playsInline = true; video.autoplay = true; video.preload = "metadata";
+    video.style.objectFit = "cover";
+    video.play().catch(() => {});
+    div.appendChild(video);
+    const playBtn = document.createElement('div');
+    playBtn.className = 'play'; playBtn.textContent = 'Play';
+    div.appendChild(playBtn);
+  } else {
+    const img = document.createElement('img');
+    img.src = item.dataset.src; img.loading = "lazy";
+    div.appendChild(img);
+  }
+  document.getElementById('gallery').appendChild(div);
+});
+setTimeout(() => document.querySelectorAll('#gallery video').forEach(v => v.play().catch(()=>{})), 600);
+
+// === LIGHTBOX ===
+let currentIndex = 0;
+const lbImg = document.getElementById('lbImg');
+const lbVideo = document.getElementById('lbVideo');
+const lightbox = document.getElementById('lightbox');
+
+function openLightbox(index) {
+  currentIndex = index;
+  showMedia(allItems[index]);
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showMedia(item) {
+  const src = item.dataset.src;
+  document.getElementById('downloadBtn').href = src;
+  document.getElementById('downloadBtn').download = src.split('/').pop();
+
+  if (item.dataset.type === 'video') {
+    lbImg.style.display = 'none';
+    lbVideo.src = src;
+    lbVideo.style.display = 'block';
+    lbVideo.play();
+  } else {
+    lbVideo.style.display = 'none';
+    lbVideo.pause();
+    lbVideo.src = '';
+    lbImg.src = src;
+    lbImg.style.display = 'block';
+  }
+}
+
+function prev() {
+  currentIndex = (currentIndex - 1 + allItems.length) % allItems.length;
+  showMedia(allItems[currentIndex]);
+}
+function next() {
+  currentIndex = (currentIndex + 1) % allItems.length;
+  showMedia(allItems[currentIndex]);
+}
+
+// === NOVO: SETAS DO TECLADO + CLIQUE NAS SETAS NA TELA ===
+document.getElementById('prevBtn').onclick = prev;
+document.getElementById('nextBtn').onclick = next;
+
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'ArrowLeft') prev();
+  if (e.key === 'ArrowRight') next();
+  if (e.key === 'Escape') {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+
+// Swipe no celular
+let touchstartX = 0;
+lightbox.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; });
+lightbox.addEventListener('touchend', e => {
+  const touchendX = e.changedTouches[0].screenX;
+  if (touchstartX - touchendX > 50) next();
+  if (touchendX - touchstartX > 50) prev();
+});
+
+// Fechar
+document.querySelector('.lb-close').onclick = () => {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+};
+lightbox.onclick = e => {
+  if (e.target === lightbox) {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+};
+
+// Botão Mais/Menos da descrição
+function toggleDescricao(){
+  const texto = document.getElementById("descTexto");
+  const seta = document.getElementById("toggleSeta");
+  const nome = document.getElementById("toggleTexto");
+  if(texto.style.maxHeight === "none"){
+    texto.style.maxHeight = "60px";
+    seta.style.transform = "rotate(0deg)";
+    nome.innerText = "Mais";
+  } else {
+    texto.style.maxHeight = "none";
+    seta.style.transform = "rotate(90deg)";
+    nome.innerText = "Menos";
+  }
+}
+</script>
+</body>
+</html>
